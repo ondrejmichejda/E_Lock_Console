@@ -32,6 +32,16 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core.cs" />
+    <Compile Include="Command\ICommandService.cs" />
+    <Compile Include="Command\ICommandReceiver.cs" />
+    <Compile Include="Command\CommandService.cs" />
+    <Compile Include="Logger\ILoggable.cs" />
+    <Compile Include="Logger\Logger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Command\" />
+    <Folder Include="Logger\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

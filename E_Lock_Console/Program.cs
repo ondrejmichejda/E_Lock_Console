@@ -4,9 +4,12 @@ namespace E_Lock_Console
 {
     class MainClass
     {
+        private static Core app;
+
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            app = new Core();
+            app.Run();
         }
     }
 }
