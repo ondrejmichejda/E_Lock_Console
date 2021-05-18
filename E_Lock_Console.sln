@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.809.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E_Lock_Console", "E_Lock_Console\E_Lock_Console.csproj", "{583EB38E-77EF-45CC-8A12-DBA4A463258C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|anycpu = Debug|anycpu
+		Release|anycpu = Release|anycpu
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{583EB38E-77EF-45CC-8A12-DBA4A463258C}.Debug|anycpu.ActiveCfg = Debug|anycpu
+		{583EB38E-77EF-45CC-8A12-DBA4A463258C}.Debug|anycpu.Build.0 = Debug|anycpu
+		{583EB38E-77EF-45CC-8A12-DBA4A463258C}.Release|anycpu.ActiveCfg = Release|anycpu
+		{583EB38E-77EF-45CC-8A12-DBA4A463258C}.Release|anycpu.Build.0 = Release|anycpu
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28E8A1EC-0ED0-4645-9C61-3A8E4FCC35B9}
+	EndGlobalSection
+EndGlobal
