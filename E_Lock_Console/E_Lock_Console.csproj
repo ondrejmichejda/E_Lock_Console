@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -38,10 +38,10 @@
     <Compile Include="Command\CommandService.cs" />
     <Compile Include="Logger\ILoggable.cs" />
     <Compile Include="Logger\Logger.cs" />
+    <Compile Include="Serial\ISerialService.cs" />
+    <Compile Include="Serial\OnReceiveEventArgs.cs" />
+    <Compile Include="Serial\SerialService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Command\" />
-    <Folder Include="Logger\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

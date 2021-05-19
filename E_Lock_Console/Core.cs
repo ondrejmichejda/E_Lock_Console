@@ -1,25 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using E_Lock_Console.Command;
+using E_Lock_Console.Serial;
 
 namespace E_Lock_Console
 {
     public class Core : ICommandReceiver, ILoggable
     {
         private readonly ICommandService _commandService;
+        private readonly ISerialService _serialService;
+
         private bool _shutdownToken = false;
 
         public Core()
         {
             _commandService = new CommandService();
+            _serialService = new SerialService();
 
             _commandService.RegisterReceiver("help", this);
             _commandService.RegisterReceiver("exit", this);
             _commandService.RegisterReceiver("command1", this);
             _commandService.RegisterReceiver("command2", this);
 
+            _serialService.OnReceive += _serialService_OnReceive;
+
 
             Logger.Log(this, "Application started, type \'help\' to show available commands");
+        }
+
+        private void _serialService_OnReceive(object sender, EventArgs e)
+        {
+            Console.WriteLine("Bingo");
         }
 
         public string GetName()
