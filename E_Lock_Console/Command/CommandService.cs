@@ -6,7 +6,7 @@ namespace E_Lock_Console.Command
     /// <summary>
     /// Service covering all commands distribution.
     /// </summary>
-    public class CommandService : ICommandService, ILoggable
+    public class CommandService : ICommandService
     {
         
 
@@ -17,8 +17,13 @@ namespace E_Lock_Console.Command
         {
             { "help", "help" },
             { "exit", "exit" },
-            { "command1", "command1 [arg]" },
-            { "command2", "command2 [arg]" }
+            { "connect", "connect" },
+            { "disconnect", "disconnect" },
+            { "portinfo", "portinfo"},
+            { "settime" , "settime"},
+            { "unlock", "unlock" },
+            { "ledtest", "ledtest [-r -g -b]" },
+            { "getlog", "getlog [' ' -minute (x) -hour (x) -day (x) -week (x) -month (x) -year]" }
         };
 
         /// <summary>

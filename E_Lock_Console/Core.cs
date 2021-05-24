@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using E_Lock_Console.Arduino;
 using E_Lock_Console.Command;
 using E_Lock_Console.Serial;
 
@@ -9,28 +10,22 @@ namespace E_Lock_Console
     {
         private readonly ICommandService _commandService;
         private readonly ISerialService _serialService;
+        private readonly IArduinoService _arduinoService;
 
         private bool _shutdownToken = false;
 
         public Core()
         {
             _commandService = new CommandService();
-            _serialService = new SerialService();
+            _serialService = new SerialService(_commandService);
+            _arduinoService = new ArduinoService(_commandService, _serialService);
 
             _commandService.RegisterReceiver("help", this);
             _commandService.RegisterReceiver("exit", this);
-            _commandService.RegisterReceiver("command1", this);
-            _commandService.RegisterReceiver("command2", this);
-
-            _serialService.OnReceive += _serialService_OnReceive;
-
 
             Logger.Log(this, "Application started, type \'help\' to show available commands");
-        }
 
-        private void _serialService_OnReceive(object sender, EventArgs e)
-        {
-            Console.WriteLine("Bingo");
+            _serialService.AutoConnect();
         }
 
         public string GetName()
@@ -47,12 +42,6 @@ namespace E_Lock_Console
                     break;
                 case "exit":
                     _shutdown();
-                    break;
-                case "command1":
-                    Logger.Log(this, "Processing command1 with arguments: " + args.ToString());
-                    break;
-                case "command2":
-                    Logger.Log(this, "Processing command2 with arguments: " + args.ToString());
                     break;
             }
         }
@@ -85,6 +74,9 @@ namespace E_Lock_Console
         private void _shutdown()
         {
             _shutdownToken = true;
+            _arduinoService?.Dispose();
+            _serialService?.Dispose();
+            _commandService?.Dispose();
         }
         
     }

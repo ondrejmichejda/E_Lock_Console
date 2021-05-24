@@ -7,7 +7,7 @@ namespace E_Lock_Console.Command
     /// Subscriber / Publisher pattern implementation where any class of type "ICommandReceiver" can register and receive messages.
     /// Sending messages is done using an instance of this ICommandService.
     /// </summary>
-    public interface ICommandService
+    public interface ICommandService : IDisposable, ILoggable
     {
         /// <summary>
         /// Returns available commands.

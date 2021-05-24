@@ -3,7 +3,7 @@ namespace E_Lock_Console
 {
     public static class Logger
     {
-        static readonly string Delimeter = ";";
+        static readonly string Delimeter = "; ";
 
         /// <summary>
         /// Logs message with object identifier and time.
