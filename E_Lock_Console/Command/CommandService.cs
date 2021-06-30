@@ -23,7 +23,8 @@ namespace E_Lock_Console.Command
             { "settime" , "settime"},
             { "unlock", "unlock" },
             { "ledtest", "ledtest [-r -g -b]" },
-            { "getlog", "getlog [' ' -minute (x) -hour (x) -day (x) -week (x) -month (x) -year]" }
+            { "getlog", "getlog [' ' -minute (x) -hour (x) -day (x) -week (x) -month (x) -year]" },
+            { "adduser", "adduser"}
         };
 
         /// <summary>

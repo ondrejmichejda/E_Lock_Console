@@ -22,6 +22,7 @@ namespace E_Lock_Console.Arduino
             _commandService.RegisterReceiver("unlock", this);
             _commandService.RegisterReceiver("ledtest", this);
             _commandService.RegisterReceiver("getlog", this);
+            _commandService.RegisterReceiver("adduser", this);
 
         }
 
@@ -31,6 +32,7 @@ namespace E_Lock_Console.Arduino
             _commandService.TryUnregisterReceiver("unlock", this);
             _commandService.TryUnregisterReceiver("ledtest", this);
             _commandService.TryUnregisterReceiver("getlog", this);
+            _commandService.TryUnregisterReceiver("adduser", this);
         }
 
         public void OnReceiveCommand(string command, object args)
@@ -53,6 +55,9 @@ namespace E_Lock_Console.Arduino
                     break;
                 case "getlog":
                     throw new NotImplementedException();
+                    break;
+                case "adduser":
+                    _serialService.Send(_buildCommand(Command.ADDUSER));
                     break;
             }
         }
@@ -95,6 +100,7 @@ namespace E_Lock_Console.Arduino
         SETTIME = 1,
         UNLOCK = 2,
         LEDTEST = 3,
+        ADDUSER = 4,
         GETLOG = 9
     }
 }
