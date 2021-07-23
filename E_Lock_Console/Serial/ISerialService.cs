@@ -9,6 +9,6 @@ namespace E_Lock_Console.Serial
 
         void Send(string message);
 
-        void AutoConnect();
+        bool AutoConnect();
     }
 }

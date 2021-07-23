@@ -37,14 +37,15 @@ namespace E_Lock_Console.Serial
         /// <summary>
         /// Autoconnect com port if only 1 found
         /// </summary>
-        public void AutoConnect()
+        public bool AutoConnect()
         {
             Dictionary<int, string> ports = _getAvailablePorts();
             if(ports.Count == 1)
             {
                 // Only 1 com port available, try to connect
-                _connectPort(ports[1]);
+                return _connectPort(ports[1]);
             }
+            return false;
         }
 
         private void _serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -88,22 +89,25 @@ namespace E_Lock_Console.Serial
             switch (command)
             {
                 case "connect":
-                    Dictionary<int, string> portList = _getAvailablePorts();
-                    foreach  (KeyValuePair<int,string> item in portList)
+                    if (!AutoConnect())
                     {
-                        Console.WriteLine($"{item.Key}) {item.Value}");
-                    }
-                    int selectionNumber = 0;
-                    ;
-
-                    if(Int32.TryParse(Console.ReadLine(), out selectionNumber))
-                    {
-                        string portName;
-                        if(portList.TryGetValue(selectionNumber, out portName))
+                        Dictionary<int, string> portList = _getAvailablePorts();
+                        foreach (KeyValuePair<int, string> item in portList)
                         {
-                            _connectPort(portName);
+                            Console.WriteLine($"{item.Key}) {item.Value}");
                         }
-                    }                 
+                        int selectionNumber = 0;
+                        ;
+
+                        if (Int32.TryParse(Console.ReadLine(), out selectionNumber))
+                        {
+                            string portName;
+                            if (portList.TryGetValue(selectionNumber, out portName))
+                            {
+                                _connectPort(portName);
+                            }
+                        }
+                    }
                     break;
 
                 case "disconnect":
